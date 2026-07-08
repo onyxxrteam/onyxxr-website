@@ -20,7 +20,7 @@ import { OnyxLogo } from "@/components/onyx-logo";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/", label: "Command Center", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Command Center", icon: LayoutDashboard },
   { href: "/learners", label: "Learners", icon: GraduationCap },
   { href: "/student-profile", label: "Student Profile", icon: Activity },
   { href: "/courses", label: "Courses", icon: BookOpen },
@@ -36,7 +36,7 @@ const navItems = [
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  if (pathname.startsWith("/website") || pathname.startsWith("/login") || pathname.startsWith("/portal") || pathname.startsWith("/e-learning")) {
+  if (pathname === "/" || pathname.startsWith("/login") || pathname.startsWith("/portal") || pathname.startsWith("/e-learning")) {
     return <>{children}</>;
   }
 
