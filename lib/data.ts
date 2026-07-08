@@ -1,4 +1,4 @@
-import type { AuditEvent, Course, Instructor, Learner, Organization, RemediationPlan, SafetyEvent, XrSession } from "@/lib/types";
+import type { AuditEvent, Course, Instructor, Learner, LearnerCourseProgress, Organization, RemediationPlan, SafetyEvent, XrSession } from "@/lib/types";
 
 export const organizations: Organization[] = [
   { id: "org-nmtc", name: "Naval Medical Training Center", type: "Military Medical", activeLearners: 126, completionRate: 81, certificationRate: 73, criticalFailureRate: 5.4, revenue: 612000, renewalRisk: "low" },
@@ -103,3 +103,297 @@ export const kpis = {
   xrSessions: 1469,
   renewalRate: 68
 };
+
+export const eLearningProgressRecords: LearnerCourseProgress[] = [
+  {
+    id: "elp-narin-bls",
+    learnerName: "Narin S.",
+    role: "Paramedic Student",
+    courseName: "BLS Provider",
+    courseType: "BLS",
+    overallProgress: 62,
+    preTest: {
+      id: "test-narin-pre",
+      title: "BLS Provider Pre-test",
+      courseType: "BLS",
+      kind: "pre-test",
+      questions: 25,
+      passingScore: 70,
+      timeLimitMin: 25,
+      attemptNumber: 1,
+      score: 62,
+      status: "completed",
+      startTime: "2026-07-07 08:10",
+      submitTime: "2026-07-07 08:29",
+      timeUsedMin: 19,
+      weakTopicAreas: ["AED safety sequence", "Abnormal breathing recognition"],
+      recommendedModules: ["AED Operation and Safety Check", "Recognition of Cardiac Arrest"]
+    },
+    postTest: {
+      id: "test-narin-post",
+      title: "BLS Provider Post-test",
+      courseType: "BLS",
+      kind: "post-test",
+      questions: 30,
+      passingScore: 84,
+      timeLimitMin: 30,
+      attemptNumber: 0,
+      score: null,
+      status: "locked",
+      startTime: null,
+      submitTime: null,
+      timeUsedMin: null,
+      weakTopicAreas: [],
+      recommendedModules: []
+    },
+    videoProgress: 74,
+    moduleCompletion: 58,
+    checkpointAverage: 82,
+    totalTimeSpentMin: 109,
+    estimatedRemainingMin: 64,
+    lastActivityAt: "2026-07-07 15:20",
+    xrEligibility: "locked",
+    instructorValidationStatus: "locked",
+    certificationReadiness: "locked",
+    nextAction: "Continue AED Operation and Safety Check module",
+    lockedReason: "Post-test and XR scenario unlock after all required video modules and checkpoint quizzes are complete.",
+    sectionProgress: [
+      { section: "Pre-test", weight: 10, progress: 100, status: "completed" },
+      { section: "Video modules", weight: 35, progress: 74, status: "in_progress" },
+      { section: "Checkpoint quizzes", weight: 15, progress: 80, status: "in_progress" },
+      { section: "Post-test", weight: 15, progress: 0, status: "locked" },
+      { section: "XR scenario", weight: 15, progress: 0, status: "locked" },
+      { section: "Instructor validation", weight: 10, progress: 0, status: "locked" }
+    ],
+    modules: [
+      {
+        id: "bls-scene-assessment",
+        courseCode: "BLS",
+        courseName: "BLS Provider",
+        title: "Scene Safety and Initial Assessment",
+        progress: 100,
+        status: "completed",
+        timeSpentMin: 21,
+        estimatedRemainingMin: 0,
+        objectives: ["Confirm scene safety", "Assess responsiveness", "Activate emergency response"],
+        keyClinicalPoints: ["Do not delay CPR once cardiac arrest is recognized", "Call for help and request AED early"],
+        criticalSafetyErrors: ["Failure to activate emergency response", "Delayed CPR initiation"],
+        relatedXrScenario: "Adult BLS witnessed arrest",
+        completionCriteria: ["Watch at least 90% of video", "Complete checkpoint quiz", "Spend at least 10 minutes"],
+        lessons: [
+          {
+            id: "vid-scene-1",
+            title: "Initial Assessment Sequence",
+            durationMin: 14,
+            watchedMin: 14,
+            watchedPercent: 100,
+            requiredWatchThreshold: 90,
+            canSkip: false,
+            checkpointRequired: true,
+            status: "completed",
+            lastWatchedAt: "2026-07-07 09:12",
+            chapters: [
+              { id: "chap-1", title: "Scene safety", durationMin: 3, watchedPercent: 100, checkpointStatus: "completed" },
+              { id: "chap-2", title: "Responsiveness check", durationMin: 4, watchedPercent: 100, checkpointStatus: "completed" },
+              { id: "chap-3", title: "Emergency activation", durationMin: 7, watchedPercent: 100, checkpointStatus: "completed" }
+            ]
+          }
+        ],
+        checkpoints: [
+          { id: "chk-scene-1", title: "Initial Assessment Checkpoint", triggerPercent: 100, questions: 3, attempts: 1, score: 100, passingScore: 80, timeUsedMin: 2, weakTopics: [], status: "passed" }
+        ]
+      },
+      {
+        id: "bls-aed-safety",
+        courseCode: "BLS",
+        courseName: "BLS Provider",
+        title: "AED Operation and Safety Check",
+        progress: 46,
+        status: "in_progress",
+        timeSpentMin: 18,
+        estimatedRemainingMin: 22,
+        objectives: ["Apply AED pads correctly", "Clear patient before analysis and shock", "Resume CPR immediately after shock"],
+        keyClinicalPoints: ["Hands-off time must be minimized", "Shock safety behavior is mandatory"],
+        criticalSafetyErrors: ["Unsafe shock delivery", "Failure to resume CPR after shock", "No AED use in cardiac arrest"],
+        relatedXrScenario: "BLS AED shock safety",
+        completionCriteria: ["Watch at least 90% of video", "Complete 2 checkpoint quizzes", "Score at least 80%", "Spend at least 10 minutes"],
+        lessons: [
+          {
+            id: "vid-aed-1",
+            title: "AED Operation and Safety Check",
+            durationMin: 24,
+            watchedMin: 11,
+            watchedPercent: 46,
+            requiredWatchThreshold: 90,
+            canSkip: false,
+            checkpointRequired: true,
+            status: "in_progress",
+            lastWatchedAt: "2026-07-07 15:20",
+            chapters: [
+              { id: "aed-chap-1", title: "AED pad placement", durationMin: 5, watchedPercent: 100, checkpointStatus: "passed" },
+              { id: "aed-chap-2", title: "Rhythm analysis safety", durationMin: 6, watchedPercent: 72, checkpointStatus: "in_progress" },
+              { id: "aed-chap-3", title: "Clear before shock", durationMin: 5, watchedPercent: 0, checkpointStatus: "locked" },
+              { id: "aed-chap-4", title: "Immediate CPR restart", durationMin: 8, watchedPercent: 0, checkpointStatus: "locked" }
+            ]
+          }
+        ],
+        checkpoints: [
+          { id: "chk-aed-25", title: "AED Pad Placement", triggerPercent: 25, questions: 2, attempts: 1, score: 100, passingScore: 80, timeUsedMin: 2, weakTopics: [], status: "passed" },
+          { id: "chk-aed-50", title: "AED Shock Safety", triggerPercent: 50, questions: 4, attempts: 0, score: 0, passingScore: 80, timeUsedMin: 0, weakTopics: ["Shock safety"], status: "locked" }
+        ]
+      }
+    ],
+    remediation: {
+      required: false,
+      reason: "No remediation assigned.",
+      assignedModule: "",
+      completion: 0,
+      reassessmentLocked: false
+    }
+  },
+  {
+    id: "elp-preecha-acls",
+    learnerName: "Dr. Preecha T.",
+    role: "Emergency Medicine Resident",
+    courseName: "ACLS Provider",
+    courseType: "ACLS",
+    overallProgress: 84,
+    preTest: {
+      id: "test-preecha-pre",
+      title: "ACLS Provider Pre-test",
+      courseType: "ACLS",
+      kind: "pre-test",
+      questions: 35,
+      passingScore: 70,
+      timeLimitMin: 35,
+      attemptNumber: 1,
+      score: 68,
+      status: "completed",
+      startTime: "2026-07-06 10:00",
+      submitTime: "2026-07-06 10:27",
+      timeUsedMin: 27,
+      weakTopicAreas: ["Defibrillation timing", "Post-ROSC care"],
+      recommendedModules: ["Defibrillation and Cardioversion", "Post-Cardiac Arrest Care"]
+    },
+    postTest: {
+      id: "test-preecha-post",
+      title: "ACLS Provider Post-test",
+      courseType: "ACLS",
+      kind: "post-test",
+      questions: 40,
+      passingScore: 84,
+      timeLimitMin: 40,
+      attemptNumber: 1,
+      score: 84,
+      status: "passed",
+      startTime: "2026-07-07 11:10",
+      submitTime: "2026-07-07 11:43",
+      timeUsedMin: 33,
+      weakTopicAreas: ["Defibrillation timing"],
+      recommendedModules: ["Defibrillation Timing Remediation"]
+    },
+    videoProgress: 100,
+    moduleCompletion: 100,
+    checkpointAverage: 88,
+    totalTimeSpentMin: 238,
+    estimatedRemainingMin: 35,
+    lastActivityAt: "2026-07-07 14:40",
+    xrEligibility: "completed",
+    instructorValidationStatus: "locked",
+    certificationReadiness: "remediation_required",
+    nextAction: "Complete remediation for defibrillation timing",
+    lockedReason: "Instructor validation is locked until remediation is completed after XR critical safety event.",
+    sectionProgress: [
+      { section: "Pre-test", weight: 10, progress: 100, status: "completed" },
+      { section: "Video modules", weight: 35, progress: 100, status: "completed" },
+      { section: "Checkpoint quizzes", weight: 15, progress: 100, status: "completed" },
+      { section: "Post-test", weight: 15, progress: 100, status: "passed" },
+      { section: "XR scenario", weight: 15, progress: 100, status: "completed" },
+      { section: "Instructor validation", weight: 10, progress: 0, status: "locked" }
+    ],
+    modules: [
+      {
+        id: "acls-defib-cardio",
+        courseCode: "ACLS",
+        courseName: "ACLS Provider",
+        title: "Defibrillation and Cardioversion",
+        progress: 100,
+        status: "completed",
+        timeSpentMin: 34,
+        estimatedRemainingMin: 0,
+        objectives: ["Differentiate shockable rhythms", "Deliver timely defibrillation", "Minimize CPR interruptions"],
+        keyClinicalPoints: ["VF/pVT requires immediate defibrillation", "Resume CPR immediately after shock"],
+        criticalSafetyErrors: ["Delayed shock in VF/pVT", "Shock for non-shockable rhythm", "Unsafe defibrillation"],
+        relatedXrScenario: "ACLS VF/pVT cardiac arrest",
+        completionCriteria: ["Watch at least 90%", "Complete checkpoint quiz", "Pass rhythm decision check"],
+        lessons: [
+          {
+            id: "vid-acls-defib-1",
+            title: "Defibrillation Timing in Shockable Arrest",
+            durationMin: 28,
+            watchedMin: 28,
+            watchedPercent: 100,
+            requiredWatchThreshold: 90,
+            canSkip: false,
+            checkpointRequired: true,
+            status: "completed",
+            lastWatchedAt: "2026-07-07 10:12",
+            chapters: [
+              { id: "defib-chap-1", title: "Shockable rhythm recognition", durationMin: 7, watchedPercent: 100, checkpointStatus: "passed" },
+              { id: "defib-chap-2", title: "Energy selection", durationMin: 5, watchedPercent: 100, checkpointStatus: "passed" },
+              { id: "defib-chap-3", title: "Clear and shock", durationMin: 7, watchedPercent: 100, checkpointStatus: "passed" },
+              { id: "defib-chap-4", title: "CPR restart", durationMin: 9, watchedPercent: 100, checkpointStatus: "passed" }
+            ]
+          }
+        ],
+        checkpoints: [
+          { id: "chk-defib-1", title: "Shockable Rhythm Decision", triggerPercent: 50, questions: 4, attempts: 1, score: 75, passingScore: 80, timeUsedMin: 4, weakTopics: ["VF/pVT decision speed"], status: "failed" }
+        ]
+      },
+      {
+        id: "acls-defib-remediation",
+        courseCode: "ACLS",
+        courseName: "ACLS Provider",
+        title: "Defibrillation Timing Remediation",
+        progress: 35,
+        status: "remediation_required",
+        timeSpentMin: 12,
+        estimatedRemainingMin: 23,
+        objectives: ["Reduce time to first shock", "Confirm VF/pVT without delay", "Maintain CPR fraction"],
+        keyClinicalPoints: ["Target first shock within scenario threshold", "Do not extend rhythm checks"],
+        criticalSafetyErrors: ["Defibrillation delay > 120 seconds", "Pulse/rhythm check over 10 seconds"],
+        relatedXrScenario: "Repeat ACLS VF/pVT cardiac arrest",
+        completionCriteria: ["Rewatch timing video", "Complete defibrillation checkpoint", "Repeat XR shockable rhythm scenario", "Instructor reassessment required"],
+        lessons: [
+          {
+            id: "vid-remed-defib-1",
+            title: "Rapid Defibrillation Drill",
+            durationMin: 18,
+            watchedMin: 6,
+            watchedPercent: 33,
+            requiredWatchThreshold: 90,
+            canSkip: false,
+            checkpointRequired: true,
+            status: "in_progress",
+            lastWatchedAt: "2026-07-07 14:40",
+            chapters: [
+              { id: "remed-chap-1", title: "Immediate rhythm confirmation", durationMin: 5, watchedPercent: 100, checkpointStatus: "passed" },
+              { id: "remed-chap-2", title: "Shock preparation workflow", durationMin: 6, watchedPercent: 18, checkpointStatus: "in_progress" },
+              { id: "remed-chap-3", title: "Post-shock CPR restart", durationMin: 7, watchedPercent: 0, checkpointStatus: "locked" }
+            ]
+          }
+        ],
+        checkpoints: [
+          { id: "chk-remed-defib", title: "Defibrillation Timing Check", triggerPercent: 50, questions: 5, attempts: 0, score: 0, passingScore: 80, timeUsedMin: 0, weakTopics: ["Shock timing"], status: "locked" }
+        ]
+      }
+    ],
+    remediation: {
+      required: true,
+      reason: "XR critical safety event: defibrillation delay > 120 seconds.",
+      assignedModule: "Defibrillation Timing Remediation",
+      completion: 35,
+      reassessmentLocked: true
+    }
+  }
+];

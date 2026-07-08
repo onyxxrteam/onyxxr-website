@@ -36,7 +36,7 @@ const navItems = [
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  if (pathname.startsWith("/website")) {
+  if (pathname.startsWith("/website") || pathname.startsWith("/login") || pathname.startsWith("/portal") || pathname.startsWith("/e-learning")) {
     return <>{children}</>;
   }
 

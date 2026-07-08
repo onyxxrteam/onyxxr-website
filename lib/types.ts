@@ -118,3 +118,107 @@ export interface AuditEvent {
   timestamp: string;
   event: string;
 }
+
+export type LearningStatus = "not_started" | "in_progress" | "completed" | "locked" | "failed" | "passed" | "remediation_required";
+
+export interface VideoChapter {
+  id: string;
+  title: string;
+  durationMin: number;
+  watchedPercent: number;
+  checkpointStatus: LearningStatus;
+}
+
+export interface VideoLesson {
+  id: string;
+  title: string;
+  durationMin: number;
+  watchedMin: number;
+  watchedPercent: number;
+  requiredWatchThreshold: number;
+  canSkip: boolean;
+  checkpointRequired: boolean;
+  status: LearningStatus;
+  lastWatchedAt: string;
+  chapters: VideoChapter[];
+}
+
+export interface CheckpointQuiz {
+  id: string;
+  title: string;
+  triggerPercent: number;
+  questions: number;
+  attempts: number;
+  score: number;
+  passingScore: number;
+  timeUsedMin: number;
+  weakTopics: string[];
+  status: LearningStatus;
+}
+
+export interface ELearningModule {
+  id: string;
+  courseCode: CourseCode;
+  courseName: string;
+  title: string;
+  progress: number;
+  status: LearningStatus;
+  timeSpentMin: number;
+  estimatedRemainingMin: number;
+  objectives: string[];
+  keyClinicalPoints: string[];
+  criticalSafetyErrors: string[];
+  relatedXrScenario: string;
+  completionCriteria: string[];
+  lessons: VideoLesson[];
+  checkpoints: CheckpointQuiz[];
+}
+
+export interface TestAttempt {
+  id: string;
+  title: string;
+  courseType: "BLS" | "ACLS";
+  kind: "pre-test" | "post-test" | "checkpoint";
+  questions: number;
+  passingScore: number;
+  timeLimitMin: number;
+  attemptNumber: number;
+  score: number | null;
+  status: LearningStatus;
+  startTime: string | null;
+  submitTime: string | null;
+  timeUsedMin: number | null;
+  weakTopicAreas: string[];
+  recommendedModules: string[];
+}
+
+export interface LearnerCourseProgress {
+  id: string;
+  learnerName: string;
+  role: string;
+  courseName: string;
+  courseType: "BLS" | "ACLS";
+  overallProgress: number;
+  preTest: TestAttempt;
+  postTest: TestAttempt;
+  videoProgress: number;
+  moduleCompletion: number;
+  checkpointAverage: number;
+  totalTimeSpentMin: number;
+  estimatedRemainingMin: number;
+  lastActivityAt: string;
+  xrEligibility: LearningStatus;
+  instructorValidationStatus: LearningStatus;
+  certificationReadiness: LearningStatus;
+  nextAction: string;
+  lockedReason: string | null;
+  sectionProgress: Array<{ section: string; weight: number; progress: number; status: LearningStatus }>;
+  modules: ELearningModule[];
+  remediation: {
+    required: boolean;
+    reason: string;
+    assignedModule: string;
+    completion: number;
+    reassessmentLocked: boolean;
+  };
+}

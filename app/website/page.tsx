@@ -76,6 +76,7 @@ export default function WebsitePage() {
             <a href="#pilot">Pilot</a>
           </nav>
           <div className="flex items-center gap-2">
+            <Link href="/login" className="hidden rounded-full border px-4 py-2 text-xs font-black text-slate-700 sm:inline-flex">Login</Link>
             <Link href="/" className="hidden rounded-full border px-4 py-2 text-xs font-black text-slate-700 sm:inline-flex">Dashboard</Link>
             <a href="#pilot" className="rounded-full bg-[#4F83DF] px-4 py-2 text-xs font-black text-white">Request Pilot</a>
           </div>
