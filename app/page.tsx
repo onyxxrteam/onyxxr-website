@@ -3,10 +3,8 @@ import {
   ArrowRight,
   BadgeCheck,
   BarChart3,
-  Building2,
   CheckCircle2,
   Clock3,
-  GraduationCap,
   Headset,
   Lock,
   MapPin,
@@ -43,8 +41,7 @@ const audiences = [
   { icon: Stethoscope, title: "Medical Students", text: "Clinical readiness before ward exposure, OSCE preparation, and simulation lab sessions." },
   { icon: Users, title: "Nursing Students", text: "Procedure practice, emergency response, teamwork, and communication under pressure." },
   { icon: MonitorDot, title: "Paramedic / EMT", text: "Prehospital decision-making, time-critical action, and repeatable scenario-based training." },
-  { icon: ShieldCheck, title: "Military Medical", text: "A roadmap-ready platform for tactical, maritime, and austere medical training." },
-  { icon: Building2, title: "Hospitals & Schools", text: "Institution-level visibility for training compliance, competency, and instructor workload." }
+  { icon: ShieldCheck, title: "Military Medical", text: "A roadmap-ready platform for tactical, maritime, and austere medical training." }
 ];
 
 const workflow = [
