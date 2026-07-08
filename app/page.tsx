@@ -210,7 +210,7 @@ export default function WebsitePage() {
           <h2 style={{ fontFamily: "var(--font-display)" }} className="mt-4 text-3xl font-medium leading-tight tracking-tight text-slate-950 lg:text-4xl">
             Built for the medical education ecosystem
           </h2>
-          <div className="mt-12 grid gap-4 md:grid-cols-5">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
             {audiences.map(({ icon: Icon, title, text }) => (
               <div key={title} className="rounded-2xl border border-slate-100 bg-white p-5">
                 <Icon className="h-7 w-7 text-[#4F83DF]" />
