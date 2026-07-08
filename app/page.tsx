@@ -70,12 +70,6 @@ export default function WebsitePage() {
             <a href="#pilot" className="hover:text-slate-900 transition-colors">Pilot</a>
           </nav>
           <div className="flex items-center gap-3">
-            <Link href="/login" className="hidden text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors sm:block">
-              Sign in
-            </Link>
-            <Link href="/dashboard" className="hidden rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-400 transition-colors sm:inline-flex">
-              Command Center
-            </Link>
             <a href="#pilot" className="rounded-full bg-[#2F5EAE] px-4 py-2 text-sm font-medium text-white hover:bg-[#245096] transition-colors">
               Request Pilot
             </a>
@@ -105,9 +99,6 @@ export default function WebsitePage() {
                 <a href="#pilot" className="inline-flex items-center gap-2 rounded-full bg-[#2F5EAE] px-6 py-3 text-sm font-medium text-white hover:bg-[#245096] transition-colors">
                   Request a pilot <ArrowRight className="h-4 w-4" />
                 </a>
-                <Link href="/dashboard" className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-6 py-3 text-sm font-medium text-slate-700 hover:border-slate-400 transition-colors">
-                  View Command Center
-                </Link>
               </div>
             </div>
             <div className="hidden lg:flex lg:justify-end">
@@ -248,13 +239,10 @@ export default function WebsitePage() {
                   A credible pilot includes baseline testing, XR attempts, instructor validation, remediation rate, certification integrity, and a medical director report.
                 </p>
               </div>
-              <div className="flex flex-col gap-3 lg:items-end">
-                <Link href="/dashboard" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#0d1117] hover:bg-slate-100 transition-colors">
-                  Open Command Center <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="/login" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white hover:border-white/40 transition-colors">
-                  Sign in to portal
-                </Link>
+              <div>
+                <a href="#pilot" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#0d1117] hover:bg-slate-100 transition-colors">
+                  Request Pilot <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
             </div>
           </div>
