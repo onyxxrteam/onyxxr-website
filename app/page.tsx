@@ -92,7 +92,7 @@ export default function WebsitePage() {
             <span className="h-1.5 w-1.5 rounded-full bg-[#4F83DF]" />
             Now in active pilot — BLS &amp; ACLS
           </div>
-          <div className="grid gap-16 lg:grid-cols-[1fr_auto] lg:items-start">
+          <div className="grid gap-16 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="max-w-3xl">
               <h1 style={{ fontFamily: "var(--font-display)" }} className="text-5xl font-medium leading-[1.08] tracking-tight text-[#0d1117] lg:text-7xl">
                 Medical simulation<br />
@@ -110,8 +110,8 @@ export default function WebsitePage() {
                 </Link>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <OnyxLogo showWord={false} className="[&_svg]:h-48 [&_svg]:w-48 opacity-90" />
+            <div className="hidden lg:flex lg:justify-end">
+              <OnyxLogo showWord={false} />
             </div>
           </div>
 
