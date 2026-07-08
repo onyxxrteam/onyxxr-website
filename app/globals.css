@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 27% 97%;
+    --foreground: 215 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 30% 12%;
+    --muted: 214 27% 94%;
+    --muted-foreground: 215 10% 42%;
+    --border: 214 20% 86%;
+    --input: 214 20% 86%;
+    --ring: 218 72% 55%;
+    --primary: 218 72% 55%;
+    --primary-foreground: 0 0% 100%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+.clinical-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #b7c4cf transparent;
+}
