@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -6,11 +9,14 @@ import {
   CheckCircle2,
   Clock3,
   Headset,
+  Mail,
   MapPin,
   MonitorDot,
+  Phone,
   ShieldCheck,
   Stethoscope,
-  Users
+  Users,
+  X
 } from "lucide-react";
 import { OnyxLogo } from "@/components/onyx-logo";
 
@@ -37,23 +43,81 @@ const workflow = [
   ["Certify", "Release certification only when the required evidence is complete."]
 ];
 
+function PilotModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div
+        className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute right-5 top-5 rounded-full p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+        >
+          <X className="h-4 w-4" />
+        </button>
+
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4F83DF]">Pilot Program</p>
+        <h2 style={{ fontFamily: "var(--font-display)" }} className="mt-3 text-2xl font-medium text-slate-900">
+          Let's run a pilot together.
+        </h2>
+        <p className="mt-3 text-sm leading-6 text-slate-500">
+          We're currently working with select institutions on structured pilots. Reach out and we'll walk you through the program, timeline, and what a credible outcome looks like.
+        </p>
+
+        <div className="mt-7 space-y-3">
+          <a
+            href="mailto:info@onyxxr.com"
+            className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-sm font-medium text-slate-800 hover:border-[#BFD4F6] hover:bg-[#EEF4FF] transition-colors"
+          >
+            <Mail className="h-4 w-4 text-[#4F83DF] shrink-0" />
+            info@onyxxr.com
+          </a>
+          <a
+            href="tel:+66925700904"
+            className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-sm font-medium text-slate-800 hover:border-[#BFD4F6] hover:bg-[#EEF4FF] transition-colors"
+          >
+            <Phone className="h-4 w-4 text-[#4F83DF] shrink-0" />
+            (+66) 9 2570 0904
+          </a>
+        </div>
+
+        <p className="mt-5 text-xs text-slate-400">ONYX XR CO., LTD. · บริษัท ออร์นิกซ์ เอ็กซ์อาร์ จำกัด</p>
+      </div>
+    </div>
+  );
+}
+
 export default function WebsitePage() {
+  const [pilotOpen, setPilotOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-white text-[#1a1d20]" style={{ fontFamily: "var(--font-body)" }}>
+
+      {pilotOpen && <PilotModal onClose={() => setPilotOpen(false)} />}
 
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
-          <OnyxLogo />
+          <Link href="/">
+            <OnyxLogo />
+          </Link>
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-500 lg:flex">
             <a href="#why" className="hover:text-slate-900 transition-colors">Why</a>
             <a href="#platform" className="hover:text-slate-900 transition-colors">Platform</a>
             <a href="#pilot" className="hover:text-slate-900 transition-colors">Pilot</a>
           </nav>
           <div className="flex items-center gap-3">
-            <a href="#pilot" className="rounded-full bg-[#2F5EAE] px-4 py-2 text-sm font-medium text-white hover:bg-[#245096] transition-colors">
+            <button
+              onClick={() => setPilotOpen(true)}
+              className="rounded-full bg-[#2F5EAE] px-4 py-2 text-sm font-medium text-white hover:bg-[#245096] transition-colors"
+            >
               Request Pilot
-            </a>
+            </button>
           </div>
         </div>
       </header>
@@ -77,9 +141,12 @@ export default function WebsitePage() {
                 A medical XR training platform built for measurable competency, instructor validation, and director oversight.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <a href="#pilot" className="inline-flex items-center gap-2 rounded-full bg-[#2F5EAE] px-6 py-3 text-sm font-medium text-white hover:bg-[#245096] transition-colors">
+                <button
+                  onClick={() => setPilotOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full bg-[#2F5EAE] px-6 py-3 text-sm font-medium text-white hover:bg-[#245096] transition-colors"
+                >
                   Request a pilot <ArrowRight className="h-4 w-4" />
-                </a>
+                </button>
               </div>
             </div>
             <div className="hidden lg:flex lg:justify-end">
@@ -182,9 +249,12 @@ export default function WebsitePage() {
                 </p>
               </div>
               <div>
-                <a href="#pilot" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#0d1117] hover:bg-slate-100 transition-colors">
+                <button
+                  onClick={() => setPilotOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[#0d1117] hover:bg-slate-100 transition-colors"
+                >
                   Request Pilot <ArrowRight className="h-4 w-4" />
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -214,12 +284,10 @@ export default function WebsitePage() {
 
       <footer className="border-t border-slate-100 px-6 py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <OnyxLogo />
+          <Link href="/">
+            <OnyxLogo />
+          </Link>
           <p className="text-xs text-slate-400">XR Simulation · Instructor Validation · Medical Director Dashboard</p>
-          <div className="flex gap-4 text-xs text-slate-400">
-            <Link href="/dashboard" className="hover:text-slate-700 transition-colors">Command Center</Link>
-            <Link href="/login" className="hover:text-slate-700 transition-colors">Sign in</Link>
-          </div>
         </div>
       </footer>
     </main>
