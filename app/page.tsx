@@ -191,6 +191,27 @@ export default function WebsitePage() {
         </div>
       </section>
 
+      {/* Contact */}
+      <section className="border-t border-slate-100 bg-[#FAFBFD] px-6 py-14">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4F83DF]">Contact</p>
+          <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p style={{ fontFamily: "var(--font-display)" }} className="text-2xl font-medium text-slate-900">Get in touch</p>
+              <p className="mt-2 text-sm text-slate-500">Interested in a pilot or partnership? Reach out directly.</p>
+            </div>
+            <div className="flex flex-col gap-3 sm:items-end">
+              <a href="mailto:info@onyxxr.com" className="inline-flex items-center gap-2 text-sm font-medium text-[#2F5EAE] hover:text-[#245096] transition-colors">
+                info@onyxxr.com
+              </a>
+              <a href="tel:+66925700904" className="text-sm text-slate-500 hover:text-slate-800 transition-colors">
+                (+66) 9 2570 0904
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="border-t border-slate-100 px-6 py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <OnyxLogo />
