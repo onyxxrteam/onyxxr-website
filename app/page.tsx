@@ -70,14 +70,20 @@ function PilotModal({ onClose }: { onClose: () => void }) {
         </p>
 
         <div className="mt-7 space-y-3">
-          <div className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-sm font-medium text-slate-800">
+          <a
+            href="mailto:info@onyxxr.com"
+            className="flex items-center gap-3 text-sm font-medium text-slate-800 [@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:cursor-default [@media(pointer:coarse)]:rounded-2xl [@media(pointer:coarse)]:border [@media(pointer:coarse)]:border-slate-100 [@media(pointer:coarse)]:bg-slate-50 [@media(pointer:coarse)]:px-5 [@media(pointer:coarse)]:py-4 [@media(pointer:coarse)]:hover:border-[#BFD4F6] [@media(pointer:coarse)]:hover:bg-[#EEF4FF] transition-colors"
+          >
             <Mail className="h-4 w-4 text-[#4F83DF] shrink-0" />
             info@onyxxr.com
-          </div>
-          <div className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-sm font-medium text-slate-800">
+          </a>
+          <a
+            href="tel:+66925700904"
+            className="flex items-center gap-3 text-sm font-medium text-slate-800 [@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:cursor-default [@media(pointer:coarse)]:rounded-2xl [@media(pointer:coarse)]:border [@media(pointer:coarse)]:border-slate-100 [@media(pointer:coarse)]:bg-slate-50 [@media(pointer:coarse)]:px-5 [@media(pointer:coarse)]:py-4 [@media(pointer:coarse)]:hover:border-[#BFD4F6] [@media(pointer:coarse)]:hover:bg-[#EEF4FF] transition-colors"
+          >
             <Phone className="h-4 w-4 text-[#4F83DF] shrink-0" />
             (+66) 9 2570 0904
-          </div>
+          </a>
         </div>
 
         <p className="mt-5 text-xs text-slate-400">ONYX XR CO., LTD. · บริษัท ออร์นิกซ์ เอ็กซ์อาร์ จำกัด</p>
@@ -265,8 +271,12 @@ export default function WebsitePage() {
               <p className="mt-2 text-sm text-slate-500">Interested in a pilot or partnership? Reach out directly.</p>
             </div>
             <div className="flex flex-col gap-3 sm:items-end">
-              <span className="text-sm font-medium text-[#2F5EAE]">info@onyxxr.com</span>
-              <span className="text-sm text-slate-500">(+66) 9 2570 0904</span>
+              <a href="mailto:info@onyxxr.com" className="text-sm font-medium text-[#2F5EAE] [@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:cursor-default">
+                info@onyxxr.com
+              </a>
+              <a href="tel:+66925700904" className="text-sm text-slate-500 [@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:cursor-default">
+                (+66) 9 2570 0904
+              </a>
             </div>
           </div>
         </div>
